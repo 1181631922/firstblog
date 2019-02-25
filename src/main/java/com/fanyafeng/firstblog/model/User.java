@@ -5,13 +5,15 @@ public class User {
 
     private String name;
 
-    private String sex;
+    private Integer sex;
 
-    private Byte age;
+    private String password;
 
-    private String tel;
+    private String signature;
 
-    private Integer itemId;
+    private Integer telNumber;
+
+    private String wechatId;
 
     public Integer getId() {
         return id;
@@ -29,35 +31,43 @@ public class User {
         this.name = name;
     }
 
-    public String getSex() {
+    public Integer getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
+    public void setSex(Integer sex) {
         this.sex = sex;
     }
 
-    public Byte getAge() {
-        return age;
+    public String getPassword() {
+        return password;
     }
 
-    public void setAge(Byte age) {
-        this.age = age;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getTel() {
-        return tel;
+    public String getSignature() {
+        return signature;
     }
 
-    public void setTel(String tel) {
-        this.tel = tel;
+    public void setSignature(String signature) {
+        this.signature = signature;
     }
 
-    public Integer getItemId() {
-        return itemId;
+    public Integer getTelNumber() {
+        return telNumber;
     }
 
-    public void setItemId(Integer itemId) {
-        this.itemId = itemId;
+    public void setTelNumber(Integer telNumber) {
+        this.telNumber = telNumber;
+    }
+
+    public String getWechatId() {
+        return wechatId;
+    }
+
+    public void setWechatId(String wechatId) {
+        this.wechatId = wechatId;
     }
 }

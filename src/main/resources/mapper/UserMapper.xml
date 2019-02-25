@@ -3,14 +3,15 @@
 <mapper namespace="com.fanyafeng.firstblog.dao.UserMapper">
   <resultMap id="BaseResultMap" type="com.fanyafeng.firstblog.model.User">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="CHAR" property="name" />
-    <result column="sex" jdbcType="CHAR" property="sex" />
-    <result column="age" jdbcType="TINYINT" property="age" />
-    <result column="tel" jdbcType="CHAR" property="tel" />
-    <result column="item_id" jdbcType="INTEGER" property="itemId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="signature" jdbcType="VARCHAR" property="signature" />
+    <result column="tel_number" jdbcType="INTEGER" property="telNumber" />
+    <result column="wechat_id" jdbcType="VARCHAR" property="wechatId" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, name, sex, age, tel, item_id
+    id, name, sex, password, signature, tel_number, wechat_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -23,10 +24,12 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.fanyafeng.firstblog.model.User">
-    insert into t_user (id, name, sex, age, 
-      tel, item_id)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=CHAR}, #{sex,jdbcType=CHAR}, #{age,jdbcType=TINYINT}, 
-      #{tel,jdbcType=CHAR}, #{itemId,jdbcType=INTEGER})
+    insert into t_user (id, name, sex, 
+      password, signature, tel_number, 
+      wechat_id)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
+      #{password,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR}, #{telNumber,jdbcType=INTEGER}, 
+      #{wechatId,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.fanyafeng.firstblog.model.User">
     insert into t_user
@@ -40,14 +43,17 @@
       <if test="sex != null">
         sex,
       </if>
-      <if test="age != null">
-        age,
+      <if test="password != null">
+        password,
       </if>
-      <if test="tel != null">
-        tel,
+      <if test="signature != null">
+        signature,
       </if>
-      <if test="itemId != null">
-        item_id,
+      <if test="telNumber != null">
+        tel_number,
+      </if>
+      <if test="wechatId != null">
+        wechat_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -55,19 +61,22 @@
         #{id,jdbcType=INTEGER},
       </if>
       <if test="name != null">
-        #{name,jdbcType=CHAR},
+        #{name,jdbcType=VARCHAR},
       </if>
       <if test="sex != null">
-        #{sex,jdbcType=CHAR},
+        #{sex,jdbcType=INTEGER},
       </if>
-      <if test="age != null">
-        #{age,jdbcType=TINYINT},
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
       </if>
-      <if test="tel != null">
-        #{tel,jdbcType=CHAR},
+      <if test="signature != null">
+        #{signature,jdbcType=VARCHAR},
       </if>
-      <if test="itemId != null">
-        #{itemId,jdbcType=INTEGER},
+      <if test="telNumber != null">
+        #{telNumber,jdbcType=INTEGER},
+      </if>
+      <if test="wechatId != null">
+        #{wechatId,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -75,30 +84,34 @@
     update t_user
     <set>
       <if test="name != null">
-        name = #{name,jdbcType=CHAR},
+        name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="sex != null">
-        sex = #{sex,jdbcType=CHAR},
+        sex = #{sex,jdbcType=INTEGER},
       </if>
-      <if test="age != null">
-        age = #{age,jdbcType=TINYINT},
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
       </if>
-      <if test="tel != null">
-        tel = #{tel,jdbcType=CHAR},
+      <if test="signature != null">
+        signature = #{signature,jdbcType=VARCHAR},
       </if>
-      <if test="itemId != null">
-        item_id = #{itemId,jdbcType=INTEGER},
+      <if test="telNumber != null">
+        tel_number = #{telNumber,jdbcType=INTEGER},
+      </if>
+      <if test="wechatId != null">
+        wechat_id = #{wechatId,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.fanyafeng.firstblog.model.User">
     update t_user
-    set name = #{name,jdbcType=CHAR},
-      sex = #{sex,jdbcType=CHAR},
-      age = #{age,jdbcType=TINYINT},
-      tel = #{tel,jdbcType=CHAR},
-      item_id = #{itemId,jdbcType=INTEGER}
+    set name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      password = #{password,jdbcType=VARCHAR},
+      signature = #{signature,jdbcType=VARCHAR},
+      tel_number = #{telNumber,jdbcType=INTEGER},
+      wechat_id = #{wechatId,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

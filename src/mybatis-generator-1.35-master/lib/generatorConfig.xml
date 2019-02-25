@@ -11,7 +11,7 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf-8&amp;autoReconnect=true" userId="root" password="mysql">
+			connectionURL="jdbc:mysql://127.0.0.1:3306/myblog?characterEncoding=utf-8&amp;autoReconnect=true" userId="root" password="mysql">
         </jdbcConnection>
 		<!-- 数据库类型与java类型转换 -->
         <javaTypeResolver>
@@ -23,7 +23,7 @@
             <property name="trimStrings" value="false"/>
         </javaModelGenerator>
         <!-- 生成映射文件存放位置 -->
-        <sqlMapGenerator targetPackage="com.fanyafeng.firstblog.mapper" targetProject="src">
+        <sqlMapGenerator targetPackage="mapper" targetProject="src">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!-- 生成Dao类存放位置 -->
@@ -36,7 +36,14 @@
                enableUpdateByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>
+               selectByExampleQueryId="false"/>
+        <table tableName="t_article" domainObjectName="Article"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
     </context>
 </generatorConfiguration>
+
+<!-- java -jar mybatis-generator-core-1.3.5.jar -configfile generatorConfig.xml -overwrite -->

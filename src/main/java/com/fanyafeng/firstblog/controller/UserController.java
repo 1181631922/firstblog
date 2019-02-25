@@ -1,5 +1,6 @@
 package com.fanyafeng.firstblog.controller;
 
+import com.fanyafeng.firstblog.interceptor.LoginInterceptorAnnotation;
 import com.fanyafeng.firstblog.model.User;
 import com.fanyafeng.firstblog.service.UserService;
 import org.springframework.stereotype.Controller;
