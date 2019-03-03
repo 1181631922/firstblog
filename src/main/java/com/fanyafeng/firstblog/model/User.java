@@ -70,4 +70,17 @@ public class User {
     public void setWechatId(String wechatId) {
         this.wechatId = wechatId;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sex=" + sex +
+                ", password='" + password + '\'' +
+                ", signature='" + signature + '\'' +
+                ", telNumber=" + telNumber +
+                ", wechatId='" + wechatId + '\'' +
+                '}';
+    }
 }

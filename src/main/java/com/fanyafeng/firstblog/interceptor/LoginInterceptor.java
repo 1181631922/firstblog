@@ -18,10 +18,10 @@ import java.lang.reflect.Method;
 public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        if (accessLoginInterceptor((HandlerMethod) handler)) {
-            return true;
-        }
-        return false;
+//        if (accessLoginInterceptor((HandlerMethod) handler)) {
+//            return true;
+//        }
+        return true;
     }
 
     @Override
