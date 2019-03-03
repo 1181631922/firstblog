@@ -1,7 +1,8 @@
-package com.fanyafeng.firstblog.controller;
+package com.fanyafeng.firstblog.controller.user;
 
 import com.fanyafeng.firstblog.interceptor.LoginInterceptorAnnotation;
 import com.fanyafeng.firstblog.model.User;
+import com.fanyafeng.firstblog.returnmessage.MessageResponse;
 import com.fanyafeng.firstblog.service.UserService;
 import com.fanyafeng.firstblog.service.impl.UserServiceImpl;
 import com.github.pagehelper.PageHelper;
@@ -27,18 +28,19 @@ public class UserController {
 
     @RequestMapping("/showUser")
     @ResponseBody
-    public User toIndex(HttpServletRequest request, Model model) {
+    public MessageResponse toIndex(HttpServletRequest request, Model model) {
         int userId = Integer.parseInt(request.getParameter("id"));
         User user = this.userService.getUserById(userId);
-        return user;
+        return MessageResponse.success().add(user);
     }
 
     @RequestMapping("/showUserList")
     @ResponseBody
-    public List<User> showUserList(HttpServletRequest request, Model model) {
+    public MessageResponse showUserList(HttpServletRequest request, Model model) {
         int pageNum = Integer.parseInt(request.getParameter("pageNum"));
         int pageSize = Integer.parseInt(request.getParameter("pageSize"));
+        String likeField = request.getParameter("likeField");
         PageHelper.startPage(pageNum, pageSize);
-        return this.userService.selectByLikeField("fan");
+        return MessageResponse.success().add(this.userService.selectByLikeField(likeField));
     }
 }
