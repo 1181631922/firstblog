@@ -38,6 +38,11 @@ public class MessageResponse {
         return this;
     }
 
+    public MessageResponse add(Map<String, Object> data) {
+        this.data.putAll(data);
+        return this;
+    }
+
     public int getCode() {
         return code;
     }
@@ -60,5 +65,15 @@ public class MessageResponse {
 
     public void setData(Map<String, Object> data) {
         this.data = data;
+    }
+
+
+    @Override
+    public String toString() {
+        return "MessageResponse{" +
+                "code=" + code +
+                ", success=" + success +
+                ", data=" + data +
+                '}';
     }
 }

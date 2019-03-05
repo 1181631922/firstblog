@@ -37,10 +37,15 @@ public class UserController {
     @RequestMapping("/showUserList")
     @ResponseBody
     public MessageResponse showUserList(HttpServletRequest request, Model model) {
-        int pageNum = Integer.parseInt(request.getParameter("pageNum"));
-        int pageSize = Integer.parseInt(request.getParameter("pageSize"));
-        String likeField = request.getParameter("likeField");
-        PageHelper.startPage(pageNum, pageSize);
-        return MessageResponse.success().add(this.userService.selectByLikeField(likeField));
+        try {
+           int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+            int pageSize = Integer.parseInt(request.getParameter("pageSize"));
+            String likeField = request.getParameter("likeField");
+            PageHelper.startPage(pageNum, pageSize);
+            return MessageResponse.success().add(this.userService.selectByLikeField(likeField));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return MessageResponse.fail();
     }
 }
